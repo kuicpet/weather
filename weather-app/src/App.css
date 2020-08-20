@@ -1,14 +1,24 @@
 .App {
   text-align: center;
   display: flex;
-  flex-direction: column;
+  background: url('https://source.unsplash.com/collection/1408037/1600x900') no-repeat center / cover;
+  color: #fff;
   width: 100%;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: 0;
   font-family: 'Helvetica', sans-serif;
+}
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  min-height: 364px;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0px 10px #111111;
 }
 h1 {
   font-weight: 300;
