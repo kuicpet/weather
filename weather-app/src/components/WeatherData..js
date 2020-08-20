@@ -2,7 +2,9 @@ import React from 'react';
 
 import { DegreesToDirection, Month, Weekday, Day } from '../helpers/utils';
 import { Clock } from './Clock';
-import clockIcon from '../images/clock.svg';
+import clockIcon from '../images/clock(1).svg';
+import dropIcon from '../images/droplet.svg';
+import windIcon from '../images/wind(1).svg';
 
 export const WeatherData = ({ data }) => {
 
@@ -44,14 +46,14 @@ export const WeatherData = ({ data }) => {
             <footer>
                 <div className="weather-prop">
                     <img 
-                    src={require('../images/wind.svg')}
+                    src={windIcon}
                     alt=""
                     />
                     <h4>{DegreesToDirection(deg)} {speed} KPH</h4>
                 </div>
                 <div className="weather-prop">
                     <img 
-                    src={require("../images/drop.svg")}
+                    src={dropIcon}
                     alt=""
                     />
                     <h4>{humidity} %</h4>
