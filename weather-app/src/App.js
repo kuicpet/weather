@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { WeatherData } from './components/WeatherData.';
+import { StatusData } from './components/StatusData';
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -16,22 +19,30 @@ class App extends Component {
 
   // get users position
   weatherInit = () => {
+
     const success = (position) => {
+      this.setState({status: 'fetching'});
+      localStorage.setItem('location-allowed', true);
       this.getWeatherdata(position.coords.latitude, position.coords.longitude);
     }
+
     const error = () => {
+      this.setState({status: 'unable'});
+      localStorage.removeItem('location-allowed');
       alert('Unable to retrive location. ');
     }
 
     if(navigator.geolocation) {
+      this.setState({status: 'fetching'});
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
+      this.setState({status: 'unsupported'});
       alert('Your browser does not support location tracking, or permission is denied. ')
     }
   }
 
   // get weather Data
-  getWeatherdata = (latitude, longitude) => {
+  getWeatherData = (latitude, longitude) => {
     const weatherApi = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`;
     
     fetch(weatherApi, { signal: this.controllerSignal })
@@ -69,22 +80,48 @@ class App extends Component {
     });
   }
 
+  returnActiveView = (status) => {
+    switch(status) {
+      case 'init':
+        return(
+          <button 
+          className="btn-main"
+          onClick={this.onClick}
+          >
+            Get My location
+          </button>
+        );
+      case 'success':
+        return <WeatherData data={this.state.weatherData} />;
+      default:
+        return <StatusData status={status} />;
+    }
+  }
+
   componentDidMount() {
-    this.weatherInit();
+    if(localStorage.getItem('location-allowed')) {
+      this.weatherInit();
+    } else {
+      return;
+    }
   }
 
   componentWillMount() {
     this.abortController.abort();
   }
 
+  onClick = () => {
+    this.weatherInit();
+  }
+
   render() {
     return (
       <div className='App'>
         <div className="container">
-          <h1>Welcome to Weather near You.</h1>
+          <WeatherData  data={this.state.weatherData}/>
         </div>
       </div>
-    )
+    );
   }
 }
 
