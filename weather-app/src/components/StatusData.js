@@ -6,13 +6,13 @@ export const StatusData = ({ status }) => {
 
     switch (status) {
         case 'fetching':
-            statusMessage = 'fetching weather data';
+            statusMessage = 'Fetching weather data';
             break;
         case 'unable':
-            statusMessage = 'unable to retrieve location';
+            statusMessage = 'Unable to retrieve location';
             break;
         case 'unsupported':
-            statusMessage = 'location tracking not supported or blocked';
+            statusMessage = 'Location tracking not supported or blocked';
             break;
         default:
             statusMessage = '';

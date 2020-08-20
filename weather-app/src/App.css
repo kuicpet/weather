@@ -18,9 +18,9 @@
   max-width: 80%;;
   min-height: 364px;
   padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 0px 10px #111111;
-  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(253, 97, 97, 0.1);
 }
 h1 {
   font-weight: 300;
@@ -32,7 +32,7 @@ header {
 }
 div:first-child {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center; 
 }
 img {
@@ -95,7 +95,9 @@ img {
   transition: all 200ms ease;
 }
 .btn-main:hover {
-  background: rgba(0, 0, 0, 0.5);
+  background: black;
+  outline: none;
+  border: none;
 }
 .status-message {
   text-align: center;
@@ -103,4 +105,5 @@ img {
   top: 50%;
   left: 0;
   width: 100%;
+  font-weight: 100;
 }
