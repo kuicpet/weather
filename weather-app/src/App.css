@@ -15,10 +15,12 @@
   flex-direction: column;
   justify-content: space-between;
   width: 400px;
+  max-width: 80%;;
   min-height: 364px;
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 0 0px 10px #111111;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 h1 {
   font-weight: 300;
