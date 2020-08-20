@@ -14,7 +14,7 @@ export const WeatherData = ({ data }) => {
                 <div>
                     <img 
                     src={clockIcon}
-                    alt='time-icon'
+                    alt='time icon'
                     />
                     <Clock />
                 </div>

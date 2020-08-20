@@ -23,7 +23,7 @@ class App extends Component {
     const success = (position) => {
       this.setState({status: 'fetching'});
       localStorage.setItem('location-allowed', true);
-      this.getWeatherdata(position.coords.latitude, position.coords.longitude);
+      this.getWeatherData(position.coords.latitude, position.coords.longitude);
     }
 
     const error = () => {
@@ -46,16 +46,17 @@ class App extends Component {
     const weatherApi = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`;
     
     fetch(weatherApi, { signal: this.controllerSignal })
-    .then(res => res.json())
+    .then(response => response.json())
     .then((result) => {
       console.log(result);
       const { name } = result;
       const { country } = result.sys;
-      const { temp, temp_min, temp_max, feels_lkie, humidity } = result.main;
+      const { temp, temp_min, temp_max, feels_like, humidity } = result.main;
       const { description, icon } = result.weather[0];
       const { speed, deg } = result.wind;
 
       this.setState({
+        status: 'success',
         isLoaded: true,
         weatherData: {
           name,
@@ -63,7 +64,7 @@ class App extends Component {
           description,
           icon,
           temp: temp.toFixed(1),
-          feels_lkie: feels_lkie.toFixed(1),
+          feels_like: feels_like.toFixed(1),
           temp_min: temp_min.toFixed(1),
           temp_max: temp_max.toFixed(1),
           speed,
@@ -79,6 +80,11 @@ class App extends Component {
       });
     });
   }
+
+  onClick = () => {
+    this.weatherInit();
+  }
+
 
   returnActiveView = (status) => {
     switch(status) {
@@ -106,19 +112,16 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     this.abortController.abort();
   }
 
-  onClick = () => {
-    this.weatherInit();
-  }
-
+ 
   render() {
     return (
       <div className='App'>
         <div className="container">
-          <WeatherData  data={this.state.weatherData}/>
+          {this.returnActiveView(this.state.status)}
         </div>
       </div>
     );
