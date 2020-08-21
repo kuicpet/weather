@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DegreesToDirection, Month, Weekday, Day } from '../helpers/utils';
+import { DegreesToDirection, Month, Weekday, Day, Year } from '../helpers/utils';
 import { Clock } from './Clock';
 import clockIcon from '../images/clock(1).svg';
 import dropIcon from '../images/droplet.svg';
@@ -13,14 +13,14 @@ export const WeatherData = ({ data }) => {
     return (
         <>
             <header>
-                <div>
+                <div className="time">
                     <img 
                     src={clockIcon}
                     alt='time icon'
                     />
                     <Clock />
                 </div>
-                <h5>{Weekday}, {Month} {Day}</h5>
+                <h5>{Weekday}, {Month} {Day},{Year}</h5>
             </header>
             <main>
                 <div className="waether-main">
@@ -35,8 +35,8 @@ export const WeatherData = ({ data }) => {
                     </div>
                 </div>
                 <div className="temp-main">
-                    <h5>Feels like {feels_like} °</h5>
-                    <h1 className="temperature">{temp}°</h1>
+                    <h5>Feels like {feels_like} °C</h5>
+                    <h1 className="temperature">{temp}°C</h1>
                     <div className="hi-lo">
                         <h5>H {temp_max}°</h5>
                         <h5>L {temp_min}°</h5>
@@ -45,6 +45,7 @@ export const WeatherData = ({ data }) => {
             </main>
             <footer>
                 <div className="weather-prop">
+                    <span>Wind Speed</span>
                     <img 
                     src={windIcon}
                     alt=""
@@ -52,6 +53,7 @@ export const WeatherData = ({ data }) => {
                     <h4>{DegreesToDirection(deg)} {speed} KPH</h4>
                 </div>
                 <div className="weather-prop">
+                    <span>Humidity</span>
                     <img 
                     src={dropIcon}
                     alt=""
@@ -59,7 +61,6 @@ export const WeatherData = ({ data }) => {
                     <h4>{humidity} %</h4>
                 </div>
             </footer>
-            <footer></footer>
         </>
     );
 };

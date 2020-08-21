@@ -6,7 +6,7 @@ export const StatusData = ({ status }) => {
 
     switch (status) {
         case 'fetching':
-            statusMessage = 'Fetching weather data';
+            statusMessage = 'Fetching weather data...';
             break;
         case 'unable':
             statusMessage = 'Unable to retrieve location';

@@ -90,12 +90,15 @@ class App extends Component {
     switch(status) {
       case 'init':
         return(
+          <>
+          <h1>Weather</h1>
           <button 
           className="btn-main"
           onClick={this.onClick}
           >
             Get My location
           </button>
+          </>
         );
       case 'success':
         return <WeatherData data={this.state.weatherData} />;

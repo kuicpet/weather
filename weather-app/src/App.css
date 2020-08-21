@@ -20,7 +20,7 @@
   padding: 1rem;
   border-radius: 2px;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-  background-color: rgba(253, 97, 97, 0.1);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 h1 {
   font-weight: 300;
@@ -47,7 +47,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: left;
+  text-align: center;
 }
 .weather-icon {
   width: 128px;
@@ -74,6 +74,7 @@ footer {
 .weather-prop {
   display: flex;
   align-items: center;
+  padding: 0.5rem;
 }
 img {
   max-width: 20px;
@@ -106,4 +107,12 @@ img {
   left: 0;
   width: 100%;
   font-weight: 100;
+}
+h5 {
+  padding: 0.4rem;
+  margin: 0.4rem;
+}
+h2 {
+  padding: 1rem 0;
+  font-weight: 300;
 }
